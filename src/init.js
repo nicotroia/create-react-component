@@ -18,8 +18,6 @@ const writeFile = (target, template, data) => {
 };
 
 module.exports = opts => {
-  console.log('>', opts);
-
   let ok = true;
   const onCancel = () => ok = false;
 
@@ -27,8 +25,6 @@ module.exports = opts => {
     if (!ok) {
       return console.log(`:( Init cancelled.`);
     }
-
-    console.log(argv);
 
     const {
       name,
