@@ -1,7 +1,7 @@
 {
   "name": "create-react-component",
   "version": "1.0.0",
-  "description": "Scaffold react components optionally with redux",
+  "description": "Scaffold React components via CLI",
   "main": "index.js",
   "license": "MIT",
   "author": "Nico Troia",
@@ -9,9 +9,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nicotroia/create-react-component.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nicotroia/create-react-component/issues"
   },
   "scripts": {
     "test": "jest"
