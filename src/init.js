@@ -39,6 +39,9 @@ module.exports = opts => {
     if (!name) {
       return console.error(':( Missing component name.');
     }
+    if (!dir) {
+      return console.error(':( Missing dir location.');
+    }
 
     const hasSlash = dir.substring(dir.length - 1) === '/';
     const location = `${dir}${!hasSlash ? '/' : ''}${name}/`;
