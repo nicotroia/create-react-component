@@ -2,7 +2,7 @@ const fs = require('fs');
 const mkdirp = require('mkdirp');
 const prompts = require('prompts');
 const templite = require('templite');
-const { format, join, parse, resolve } = require('path');
+const { join } = require('path');
 
 const questions = require('./questions');
 
