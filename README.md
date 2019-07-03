@@ -1,6 +1,12 @@
 # React Component Scaffolder
 
+## Installation 
+  - `npm install -g https://github.com/nicotroia/create-react-component.git`
+
 ## Usage
+  - `create-react-component init`
+
+## Test
  - `node index.js init`
 
 ## Input
