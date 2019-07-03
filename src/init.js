@@ -65,40 +65,40 @@ module.exports = opts => {
     };
 
     const indexTarget = `${location}index.js`
-    const indexTemplate = fs.readFileSync('src/templates/index.js', 'utf8');
+    const indexTemplate = fs.readFileSync('./src/templates/index.js', 'utf8');
     writeFile(indexTarget, indexTemplate, data);
 
     const componentTarget = `${location}${name}.js`
-    const componentTemplate = fs.readFileSync('src/templates/component.js', 'utf8');
+    const componentTemplate = fs.readFileSync('./src/templates/component.js', 'utf8');
     writeFile(componentTarget, componentTemplate, data);
 
     if (hasStyles) {
       const indexTarget = `${location}${styleFile}.styl`
-      const indexTemplate = fs.readFileSync('src/templates/component.styl', 'utf8');
+      const indexTemplate = fs.readFileSync('./src/templates/component.styl', 'utf8');
       writeFile(indexTarget, indexTemplate, data);
     }
 
     if (hasActions) {
       const actionsTarget = `${location}actions.js`
-      const actionsTemplate = fs.readFileSync('src/templates/actions.js', 'utf8');
+      const actionsTemplate = fs.readFileSync('./src/templates/actions.js', 'utf8');
       writeFile(actionsTarget, actionsTemplate, data);
     }
 
     if (hasConstants) {
       const constantsTarget = `${location}constants.js`
-      const constantsTemplate = fs.readFileSync('src/templates/constants.js', 'utf8');
+      const constantsTemplate = fs.readFileSync('./src/templates/constants.js', 'utf8');
       writeFile(constantsTarget, constantsTemplate, data);
     }
 
     if (hasReducers) {
       const reducersTarget = `${location}reducer.js`
-      const reducersTemplate = fs.readFileSync('src/templates/reducer.js', 'utf8');
+      const reducersTemplate = fs.readFileSync('./src/templates/reducer.js', 'utf8');
       writeFile(reducersTarget, reducersTemplate, data);
     }
 
     if (hasSelectors) {
       const selectorsTarget = `${location}selectors.js`
-      const selectorsTemplate = fs.readFileSync('src/templates/selectors.js', 'utf8');
+      const selectorsTemplate = fs.readFileSync('./src/templates/selectors.js', 'utf8');
       writeFile(selectorsTarget, selectorsTemplate, data);
     }
   })
