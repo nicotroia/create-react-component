@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/nicotroia/create-react-component.git"
   },
+  "bin": {
+    "create-react-component": "index.js"
+  },
   "scripts": {
     "test": "jest"
   },
