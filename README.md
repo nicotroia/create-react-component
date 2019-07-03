@@ -6,9 +6,6 @@
 ## Usage
   - `create-react-component init`
 
-## Test
- - `node index.js init`
-
 ## Input
  - name (Sidebar)
  - dir (src/components/)
