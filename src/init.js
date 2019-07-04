@@ -87,10 +87,10 @@ module.exports = () => {
       },
       { target: 'index.js', create: hasIndex },
       { target: `${lcName}.styl`, targetTemplate: 'component.styl', create: hasStyles },
-      { target: 'actions.js', test: 'actions.spec.js',create: hasActions },
-      { target: 'constants.js',create: hasConstants },
-      { target: 'reducer.js', test: 'reducer.spec.js',create: hasReducers },
-      { target: 'selectors.js', test: 'selectors.spec.js',create: hasSelectors },
+      { target: 'actions.js', test: 'actions.spec.js', create: hasActions },
+      { target: 'constants.js', create: hasConstants },
+      { target: 'reducer.js', test: 'reducer.spec.js', create: hasReducers },
+      { target: 'selectors.js', test: 'selectors.spec.js', create: hasSelectors },
     ];
 
     for (let i = 0; i < targets.length; i++) {
