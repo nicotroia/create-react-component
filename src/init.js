@@ -99,7 +99,7 @@ module.exports = () => {
 
       if (!create) continue;
 
-      const dest = `${location}${targetTemplate || target}`
+      const dest = `${location}${target || targetTemplate}`
       const file = fs.readFileSync(join(templates, targetTemplate || target), 'utf8');
       writeFile(dest, file, data);
 
