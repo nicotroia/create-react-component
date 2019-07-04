@@ -3,7 +3,7 @@ module.exports = [
     name: 'name',
     type: 'text',
     message: 'Component name',
-    initial: 'Sidebar',
+    initial: 'Sidebar'
   },
   {
     name: 'dir',
@@ -12,28 +12,38 @@ module.exports = [
     initial: 'src/components/'
   },
   {
+    name: 'hasIndex',
+    type: 'confirm',
+    message: 'Create an index file?'
+  },
+  {
     name: 'hasStyles',
     type: 'confirm',
-    message: 'Create a stylesheet?',
+    message: 'Create a stylesheet?'
   },
   {
     name: 'hasActions',
     type: 'confirm',
-    message: 'Create an actions file?',
+    message: 'Create an actions file?'
   },
   {
     name: 'hasConstants',
     type: 'confirm',
-    message: 'Create a constants file?',
+    message: 'Create a constants file?'
   },
   {
     name: 'hasReducers',
     type: 'confirm',
-    message: 'Create a reducers file?',
+    message: 'Create a reducers file?'
   },
   {
     name: 'hasSelectors',
     type: 'confirm',
-    message: 'Create a selectors file?',
+    message: 'Create a selectors file?'
   },
+  {
+    name: 'hasTests',
+    type: 'confirm',
+    message: 'Create tests?'
+  }
 ];

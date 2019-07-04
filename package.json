@@ -14,7 +14,9 @@
     "create-react-component": "index.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint ./src",
+    "lint:fix": "./node_modules/.bin/eslint --fix ./src"
   },
   "engines": {
     "node": ">= 6"
@@ -30,5 +32,24 @@
     "prompts": "^2.1.0",
     "sade": "^1.6.0",
     "templite": "^1.1.0"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "no-console": 0,
+      "no-cond-assign": 0,
+      "no-inner-declarations": 0
+    }
+  },
+  "eslintIgnore": [
+    "**/node_modules/**",
+    "**/templates/**"
+  ]
 }

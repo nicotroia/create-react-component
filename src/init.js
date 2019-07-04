@@ -7,6 +7,7 @@ const { join } = require('path');
 const questions = require('./questions');
 
 const templates = join(__dirname, 'templates');
+const testTemplates = join(__dirname, 'templates', '__tests__');
 
 const writeFile = (target, template, data) => {
   const content = templite(template, data);
@@ -20,7 +21,7 @@ const writeFile = (target, template, data) => {
   });
 };
 
-module.exports = opts => {
+module.exports = () => {
   let ok = true;
   const onCancel = () => ok = false;
 
@@ -32,11 +33,13 @@ module.exports = opts => {
     const {
       name,
       dir,
+      hasIndex,
       hasActions,
       hasConstants,
       hasReducers,
       hasSelectors,
-      hasStyles
+      hasStyles,
+      hasTests
     } = argv;
 
     if (!name) {
@@ -46,20 +49,27 @@ module.exports = opts => {
       return console.error(':( Missing dir location.');
     }
 
+    const lcName = `${name.charAt(0).toLowerCase()}${name.slice(1)}`;
     const hasSlash = dir.substring(dir.length - 1) === '/';
     const location = `${dir}${!hasSlash ? '/' : ''}${name}/`;
+    const testLocation = `${location}__tests__/`;
     mkdirp.sync(location, err => {
       if (err) console.error(err);
       else console.log(`:) ${location}`);
     });
+    if (hasTests) {
+      mkdirp.sync(testLocation, err => {
+        if (err) console.error(err);
+        else console.log(`:) ${testLocation}`);
+      });
+    }
 
-    const styleFile = `${name.charAt(0).toLowerCase()}${name.slice(1)}`;
     const data = {
       name,
       imports: {
         actions: hasActions ? "import * as actions from './actions';" : '',
         selectors: hasSelectors ? "import * as selectors from './selectors';" : '',
-        styles: hasStyles ? `import styles from './${styleFile}.styl';` : '',
+        styles: hasStyles ? `import styles from './${lcName}.styl';` : '',
         constants: hasConstants ? "import * as constants from './constants';" : '',
       },
       styles: {
@@ -67,42 +77,37 @@ module.exports = opts => {
       },
     };
 
-    const indexTarget = `${location}index.js`
-    const indexTemplate = fs.readFileSync(join(templates, 'index.js'), 'utf8');
-    writeFile(indexTarget, indexTemplate, data);
+    const targets = [
+      {
+        target: `${name}.js`,
+        targetTemplate: 'Component.js',
+        test: `${name}.spec.js`,
+        testTemplate: 'Component.spec.js',
+        create: true
+      },
+      { target: 'index.js', create: hasIndex },
+      { target: `${lcName}.styl`, targetTemplate: 'component.styl', create: hasStyles },
+      { target: 'actions.js', test: 'actions.spec.js',create: hasActions },
+      { target: 'constants.js',create: hasConstants },
+      { target: 'reducer.js', test: 'reducer.spec.js',create: hasReducers },
+      { target: 'selectors.js', test: 'selectors.spec.js',create: hasSelectors },
+    ];
 
-    const componentTarget = `${location}${name}.js`
-    const componentTemplate = fs.readFileSync(join(templates, 'component.js'), 'utf8');
-    writeFile(componentTarget, componentTemplate, data);
+    for (let i = 0; i < targets.length; i++) {
+      const t = targets[i];
+      const { target, targetTemplate, test, testTemplate, create } = t;
 
-    if (hasStyles) {
-      const indexTarget = `${location}${styleFile}.styl`
-      const indexTemplate = fs.readFileSync(join(templates, 'component.styl'), 'utf8');
-      writeFile(indexTarget, indexTemplate, data);
-    }
+      if (!create) continue;
 
-    if (hasActions) {
-      const actionsTarget = `${location}actions.js`
-      const actionsTemplate = fs.readFileSync(join(templates, 'actions.js'), 'utf8');
-      writeFile(actionsTarget, actionsTemplate, data);
-    }
+      const dest = `${location}${targetTemplate || target}`
+      const file = fs.readFileSync(join(templates, targetTemplate || target), 'utf8');
+      writeFile(dest, file, data);
 
-    if (hasConstants) {
-      const constantsTarget = `${location}constants.js`
-      const constantsTemplate = fs.readFileSync(join(templates, 'constants.js'), 'utf8');
-      writeFile(constantsTarget, constantsTemplate, data);
-    }
-
-    if (hasReducers) {
-      const reducersTarget = `${location}reducer.js`
-      const reducersTemplate = fs.readFileSync(join(templates, 'reducer.js'), 'utf8');
-      writeFile(reducersTarget, reducersTemplate, data);
-    }
-
-    if (hasSelectors) {
-      const selectorsTarget = `${location}selectors.js`
-      const selectorsTemplate = fs.readFileSync(join(templates, 'selectors.js'), 'utf8');
-      writeFile(selectorsTarget, selectorsTemplate, data);
+      if (hasTests && (testTemplate || test)) {
+        const testDest = `${testLocation}${testTemplate || test}`;
+        const testFile = fs.readFileSync(join(testTemplates, testTemplate || test), 'utf8');
+        writeFile(testDest, testFile, data);
+      }
     }
   })
 };
