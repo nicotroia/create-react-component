@@ -103,8 +103,8 @@ module.exports = () => {
       const file = fs.readFileSync(join(templates, targetTemplate || target), 'utf8');
       writeFile(dest, file, data);
 
-      if (hasTests && (testTemplate || test)) {
-        const testDest = `${testLocation}${testTemplate || test}`;
+      if (hasTests && (test || testTemplate)) {
+        const testDest = `${testLocation}${test || testTemplate}`;
         const testFile = fs.readFileSync(join(testTemplates, testTemplate || test), 'utf8');
         writeFile(testDest, testFile, data);
       }
