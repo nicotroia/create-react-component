@@ -2,7 +2,7 @@ import reducer, { initialState } from '../reducer';
 import * as constants from '../constants';
 import * as appConstants from '@/pages/App/constants';
 
-describe('Analytics Reducer tests', () => {
+describe('{{name}} Reducer tests', () => {
 
   describe('LOG_OUT', () => {
     it('should reset to initialState on logout', () => {
