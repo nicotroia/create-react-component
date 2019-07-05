@@ -14,6 +14,7 @@
  - hasConstants (Y/n)
  - hasReducers (Y/n)
  - hasSelectors (Y/n)
+ - hasTests (Y/n)
 
 ## Output
   - src
@@ -26,3 +27,8 @@
         - constants.js
         - reducer.js
         - selectors.js
+        - __tests__
+          - Sidebar.spec.js
+          - actions.spec.js
+          - reducer.spec.js
+          - selectors.spec.js
