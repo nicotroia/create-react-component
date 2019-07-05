@@ -28,7 +28,7 @@
         - constants.js
         - reducer.js
         - selectors.js
-        - __tests_\_
+        - \_\_tests\_\_
           - Sidebar.spec.js
           - actions.spec.js
           - reducer.spec.js
