@@ -9,6 +9,7 @@
 ## Input
  - name (Sidebar)
  - dir (src/components/)
+ - hasIndex (Y/n)
  - hasStyles (Y/n)
  - hasActions (Y/n)
  - hasConstants (Y/n)
