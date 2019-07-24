@@ -86,8 +86,9 @@ module.exports = () => {
         target: `${name}.js`,
         targetTemplate: 'Component.js',
         test: `${name}.spec.js`,
-        story: `${name}.story.js`,
         testTemplate: 'Component.spec.js',
+        story: `${name}.story.js`,
+        storyTemplate: 'Component.story.js',
         create: true
       },
       { target: 'index.js', create: hasIndex },
@@ -100,7 +101,7 @@ module.exports = () => {
 
     for (let i = 0; i < targets.length; i++) {
       const t = targets[i];
-      const { target, targetTemplate, test, story, testTemplate, create } = t;
+      const { target, targetTemplate, test, testTemplate, story, storyTemplate, create } = t;
 
       if (!create) continue;
 
