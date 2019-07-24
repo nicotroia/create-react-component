@@ -16,6 +16,7 @@
  - hasReducers (Y/n)
  - hasSelectors (Y/n)
  - hasTests (Y/n)
+ - hasStories (Y/n)
 
 ## Output
   - src
@@ -33,3 +34,5 @@
           - actions.spec.js
           - reducer.spec.js
           - selectors.spec.js
+        - \_\_stories\_\_
+          - Sidebar.story.js
