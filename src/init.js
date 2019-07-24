@@ -115,9 +115,9 @@ module.exports = () => {
         writeFile(testDest, testFile, data);
       }
 
-      if (hasStories && (story || storyTemplates)) {
-        const storyDest = `${storyLocation}${story || storyTemplates}`;
-        const storyFile = fs.readFileSync(join(storyTemplates, storyTemplates || story), 'utf8');
+      if (hasStories && (story || storyTemplate)) {
+        const storyDest = `${storyLocation}${story || storyTemplate}`;
+        const storyFile = fs.readFileSync(join(storyTemplates, storyTemplate || story), 'utf8');
         writeFile(storyDest, storyFile, data);
       }
     }
