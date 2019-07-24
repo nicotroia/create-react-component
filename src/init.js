@@ -8,16 +8,21 @@ const questions = require('./questions');
 
 const templates = join(__dirname, 'templates');
 const testTemplates = join(__dirname, 'templates', '__tests__');
+const storyTemplates = join(__dirname, 'templates', '__stories__');
 
 const writeFile = (target, template, data) => {
   const content = templite(template, data);
 
   fs.writeFile(target, content, err => {
-    if (err) {
-      console.error(err)
-      return
-    }
-    console.log(`:) ${target}`);
+    if (err) console.error(err);
+    else console.log(`:) ${target}`);
+  });
+};
+
+const createDir = location => {
+  mkdirp.sync(location, err => {
+    if (err) console.error(err);
+    else console.log(`:) ${location}`);
   });
 };
 
@@ -39,7 +44,8 @@ module.exports = () => {
       hasReducers,
       hasSelectors,
       hasStyles,
-      hasTests
+      hasTests,
+      hasStories,
     } = argv;
 
     if (!name) {
@@ -53,15 +59,13 @@ module.exports = () => {
     const hasSlash = dir.substring(dir.length - 1) === '/';
     const location = `${dir}${!hasSlash ? '/' : ''}${name}/`;
     const testLocation = `${location}__tests__/`;
-    mkdirp.sync(location, err => {
-      if (err) console.error(err);
-      else console.log(`:) ${location}`);
-    });
+    const storyLocation = `${location}__stories__/`;
+    createDir(location);
     if (hasTests) {
-      mkdirp.sync(testLocation, err => {
-        if (err) console.error(err);
-        else console.log(`:) ${testLocation}`);
-      });
+      createDir(testLocation);
+    }
+    if (hasStories) {
+      createDir(storyLocation);
     }
 
     const data = {
@@ -82,6 +86,7 @@ module.exports = () => {
         target: `${name}.js`,
         targetTemplate: 'Component.js',
         test: `${name}.spec.js`,
+        story: `${name}.story.js`,
         testTemplate: 'Component.spec.js',
         create: true
       },
@@ -95,7 +100,7 @@ module.exports = () => {
 
     for (let i = 0; i < targets.length; i++) {
       const t = targets[i];
-      const { target, targetTemplate, test, testTemplate, create } = t;
+      const { target, targetTemplate, test, story, testTemplate, create } = t;
 
       if (!create) continue;
 
@@ -107,6 +112,12 @@ module.exports = () => {
         const testDest = `${testLocation}${test || testTemplate}`;
         const testFile = fs.readFileSync(join(testTemplates, testTemplate || test), 'utf8');
         writeFile(testDest, testFile, data);
+      }
+
+      if (hasStories && (story || storyTemplates)) {
+        const storyDest = `${storyLocation}${story || storyTemplates}`;
+        const storyFile = fs.readFileSync(join(storyTemplates, storyTemplates || story), 'utf8');
+        writeFile(storyDest, storyFile, data);
       }
     }
   })

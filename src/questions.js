@@ -45,5 +45,10 @@ module.exports = [
     name: 'hasTests',
     type: 'confirm',
     message: 'Create tests?'
-  }
+  },
+  {
+    name: 'hasStories',
+    type: 'confirm',
+    message: 'Create stories?'
+  },
 ];
