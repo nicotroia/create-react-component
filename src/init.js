@@ -90,7 +90,7 @@ module.exports = () => {
     const targets = [
       {
         target: `${name}.${extension}`,
-        targetTemplate: "Component.js",
+        targetTemplate: `Component.${extension}`,
         test: `${name}.spec.js`,
         testTemplate: "Component.spec.js",
         story: `${name}.story.js`,
