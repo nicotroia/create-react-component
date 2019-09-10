@@ -1,8 +1,5 @@
 # React Component Scaffolder
 
-## Updating
-  - `npm publish`
-
 ## Installation 
   - `npm install -g https://github.com/nicotroia/create-react-component.git`
 
