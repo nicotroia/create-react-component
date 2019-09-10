@@ -51,4 +51,9 @@ module.exports = [
     type: 'confirm',
     message: 'Create stories?'
   },
+  {
+    name: 'isTypescript',
+    type: 'confirm',
+    message: 'Use typescript?'
+  }
 ];
