@@ -6,6 +6,11 @@
 ## Usage
   - `create-react-component init`
 
+## Update
+  - Bump package.json version
+  - git push 
+  - ~~npm publish~~ (unnecessary since we directly use the repo url)
+
 ## Input
  - name (Sidebar)
  - dir (src/components/)
