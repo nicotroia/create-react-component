@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Props } from './types';
+import { Props, State } from './types';
 
 {{imports.styles}}
 
-class {{name}} extends React.PureComponent<Required<Props>> {
+class {{name}} extends React.PureComponent<Required<Props>, State> {
   static defaultProps: Partial<Props> = {};
 
   constructor(props: Props) {
