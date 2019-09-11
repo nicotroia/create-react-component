@@ -9,7 +9,7 @@
 ## Update
   - Bump package.json version
   - git push 
-  - ~~npm publish~~ (unnecessary since we directly use the repo url)
+  - ~~npm publish~~
 
 ## Input
  - name (Sidebar)
@@ -22,6 +22,9 @@
  - hasSelectors (Y/n)
  - hasTests (Y/n)
  - hasStories (Y/n)
+ - flavor
+   - js
+   - tsx
 
 ## Output
   - src

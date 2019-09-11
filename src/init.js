@@ -46,7 +46,7 @@ module.exports = () => {
       hasStyles,
       hasTests,
       hasStories,
-      isTypescript
+      extension
     } = argv;
 
     if (!name) {
@@ -61,7 +61,6 @@ module.exports = () => {
     const location = `${dir}${!hasSlash ? "/" : ""}${name}/`;
     const testLocation = `${location}__tests__/`;
     const storyLocation = `${location}__stories__/`;
-    const extension = isTypescript ? "tsx" : "js";
     createDir(location);
     if (hasTests) {
       createDir(testLocation);
@@ -111,7 +110,7 @@ module.exports = () => {
         test: "selectors.spec.js",
         create: hasSelectors
       },
-      { target: "types.ts", create: isTypescript }
+      { target: "types.ts", create: extension }
     ];
 
     for (let i = 0; i < targets.length; i++) {
