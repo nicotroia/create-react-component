@@ -56,6 +56,6 @@ module.exports = [
     name: "extension",
     message: "Flavor",
     choices: [{ title: "js", value: "js" }, { title: "tsx", value: "tsx" }],
-    initial: 1
+    initial: 0
   }
 ];

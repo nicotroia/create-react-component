@@ -1,6 +1,6 @@
 {
   "name": "create-react-component",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Scaffold React components via CLI",
   "main": "index.js",
   "license": "MIT",
