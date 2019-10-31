@@ -7,11 +7,7 @@ import { Props, State } from './types';
 class {{name}} extends React.PureComponent<Required<Props>, State> {
   static defaultProps: Partial<Props> = {};
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {};
-  }
+  readonly state: State = {};
 
   render() {
     return (

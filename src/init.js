@@ -7,8 +7,6 @@ const { join } = require("path");
 const questions = require("./questions");
 
 const templates = join(__dirname, "templates");
-const testTemplates = join(__dirname, "templates", "__tests__");
-const storyTemplates = join(__dirname, "templates", "__stories__");
 
 const writeFile = (target, template, data) => {
   const content = templite(template, data);
@@ -89,28 +87,38 @@ module.exports = () => {
     const targets = [
       {
         target: `${name}.${extension}`,
-        targetTemplate: `Component.${extension}`,
-        test: `${name}.spec.js`,
-        testTemplate: "Component.spec.js",
-        story: `${name}.story.js`,
-        storyTemplate: "Component.story.js",
-        create: true
+        targetTemplate: `Component.${extension === "ts" ? "tsx" : extension}`,
+        test: `${name}.spec.${extension}`,
+        testTemplate: `Component.spec.${extension}`,
+        story: `${name}.story.${extension}`,
+        storyTemplate: `Component.story.${
+          extension === "ts" ? "tsx" : extension
+        }`,
+        createIf: true
       },
-      { target: "index.js", create: hasIndex },
+      { target: `index.${extension}`, createIf: hasIndex },
       {
         target: `${lcName}.styl`,
         targetTemplate: "component.styl",
-        create: hasStyles
+        createIf: hasStyles
       },
-      { target: "actions.js", test: "actions.spec.js", create: hasActions },
-      { target: "constants.js", create: hasConstants },
-      { target: "reducer.js", test: "reducer.spec.js", create: hasReducers },
       {
-        target: "selectors.js",
-        test: "selectors.spec.js",
-        create: hasSelectors
+        target: `actions.${extension}`,
+        test: `actions.spec.${extension}`,
+        createIf: hasActions
       },
-      { target: "types.ts", create: extension }
+      { target: `constants.${extension}`, createIf: hasConstants },
+      {
+        target: `reducer.${extension}`,
+        test: `reducer.spec.${extension}`,
+        createIf: hasReducers
+      },
+      {
+        target: `selectors.${extension}`,
+        test: `selectors.spec.${extension}`,
+        createIf: hasSelectors
+      },
+      { target: "types.ts", createIf: extension === "ts" }
     ];
 
     for (let i = 0; i < targets.length; i++) {
@@ -122,14 +130,14 @@ module.exports = () => {
         testTemplate,
         story,
         storyTemplate,
-        create
+        createIf
       } = t;
 
-      if (!create) continue;
+      if (!createIf) continue;
 
       const dest = `${location}${target || targetTemplate}`;
       const file = fs.readFileSync(
-        join(templates, targetTemplate || target),
+        join(templates, extension, targetTemplate || target),
         "utf8"
       );
       writeFile(dest, file, data);
@@ -137,7 +145,7 @@ module.exports = () => {
       if (hasTests && (test || testTemplate)) {
         const testDest = `${testLocation}${test || testTemplate}`;
         const testFile = fs.readFileSync(
-          join(testTemplates, testTemplate || test),
+          join(templates, extension, "__tests__", testTemplate || test),
           "utf8"
         );
         writeFile(testDest, testFile, data);
@@ -146,7 +154,7 @@ module.exports = () => {
       if (hasStories && (story || storyTemplate)) {
         const storyDest = `${storyLocation}${story || storyTemplate}`;
         const storyFile = fs.readFileSync(
-          join(storyTemplates, storyTemplate || story),
+          join(templates, extension, "__stories__", storyTemplate || story),
           "utf8"
         );
         writeFile(storyDest, storyFile, data);

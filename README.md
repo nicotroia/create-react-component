@@ -24,7 +24,7 @@
  - hasStories (Y/n)
  - flavor
    - js
-   - tsx
+   - ts
 
 ## Output
   - src

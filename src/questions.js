@@ -55,7 +55,7 @@ module.exports = [
     type: "select",
     name: "extension",
     message: "Flavor",
-    choices: [{ title: "js", value: "js" }, { title: "tsx", value: "tsx" }],
+    choices: [{ title: "js", value: "js" }, { title: "ts", value: "ts" }],
     initial: 0
   }
 ];
