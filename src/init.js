@@ -86,11 +86,13 @@ module.exports = () => {
 
     const targets = [
       {
-        target: `${name}.${extension}`,
+        target: `${name}.${extension === "ts" ? "tsx" : extension}`,
         targetTemplate: `Component.${extension === "ts" ? "tsx" : extension}`,
-        test: `${name}.spec.${extension}`,
-        testTemplate: `Component.spec.${extension}`,
-        story: `${name}.story.${extension}`,
+        test: `${name}.spec.${extension === "ts" ? "tsx" : extension}`,
+        testTemplate: `Component.spec.${
+          extension === "ts" ? "tsx" : extension
+        }`,
+        story: `${name}.story.${extension === "ts" ? "tsx" : extension}`,
         storyTemplate: `Component.story.${
           extension === "ts" ? "tsx" : extension
         }`,
