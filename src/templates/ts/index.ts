@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
 
 import { RootState } from '@/rootReducer';
 {{imports.actions}}
@@ -15,5 +16,7 @@ const mapDispatchToProps: DispatchProps = {
 
 export default connect<ConnectedProps, DispatchProps, OwnProps, RootState>(
   mapStateToProps,
-  mapDispatchToProps
-)({{name}});
+  mapDispatchToProps,
+  null,
+  { forwardRef: true }
+)(injectIntl({{name}}));
