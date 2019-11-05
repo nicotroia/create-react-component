@@ -11,7 +11,7 @@ export const stateInitializer = Record<{{name}}>({
 });
 export const initialState: RecordOf<{{name}}> = stateInitializer();
 
-export const base: Reducer<RecordOf<{{name}}>, AnyAction> = (
+export const reducer: Reducer<RecordOf<{{name}}>, AnyAction> = (
   state = initialState,
   action
 ) => {
