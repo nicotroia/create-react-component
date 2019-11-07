@@ -5,7 +5,11 @@ import Provider from '@/components/storybook/Provider';
 import DefaultStylesDecorator from '@/components/storybook/DefaultStylesDecorator';
 import {{name}} from '../{{name}}';
 
+const mockProps = {
+  
+};
+
 storiesOf('{{name}}', module)
   .addDecorator(Provider)
   .addDecorator(DefaultStylesDecorator)
-  .add('Render default', () => <{{name}} />);
+  .add('Render default', () => <{{name}} {...mockProps} />);
