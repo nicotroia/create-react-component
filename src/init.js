@@ -120,7 +120,8 @@ module.exports = () => {
         test: `selectors.spec.${extension}`,
         createIf: hasSelectors
       },
-      { target: "types.ts", createIf: extension === "ts" }
+      { target: "types.ts", createIf: extension === "ts" },
+      { target: "messages.ts", createIf: extension === "ts" }
     ];
 
     for (let i = 0; i < targets.length; i++) {
