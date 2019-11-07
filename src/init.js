@@ -68,6 +68,7 @@ module.exports = () => {
     }
 
     const data = {
+      dir,
       name,
       imports: {
         actions: hasActions ? "import * as actions from './actions';" : "",
