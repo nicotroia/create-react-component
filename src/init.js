@@ -69,6 +69,7 @@ module.exports = () => {
 
     const data = {
       dir,
+      dotDir: dir.replace(/\//g, "."),
       name,
       imports: {
         actions: hasActions ? "import * as actions from './actions';" : "",
