@@ -23,4 +23,4 @@ export interface DispatchProps {}
 
 export interface OwnProps {}
 
-export type Props = InjectedProps & ConnectedProps & DispatchProps & OwnProps;
+export type Props = ConnectedProps & DispatchProps & OwnProps;
