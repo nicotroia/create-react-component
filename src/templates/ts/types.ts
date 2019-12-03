@@ -13,14 +13,14 @@ export interface {{name}}Selector<
 
 export interface State {}
 
-export interface InjectedProps {
-  intl: IntlShape;
-}
-
 export interface ConnectedProps {}
 
 export interface DispatchProps {}
 
 export interface OwnProps {}
+
+export interface InjectedProps {
+  intl: IntlShape;
+}
 
 export type Props = ConnectedProps & DispatchProps & OwnProps;

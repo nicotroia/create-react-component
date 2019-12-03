@@ -5,9 +5,7 @@ import Provider from '@/components/storybook/Provider';
 import DefaultStylesDecorator from '@/components/storybook/DefaultStylesDecorator';
 import {{name}} from '../{{name}}';
 
-const mockProps = {
-  
-};
+const mockProps = {};
 
 storiesOf('{{noSrcDir}}{{name}}', module)
   .addDecorator(Provider)
