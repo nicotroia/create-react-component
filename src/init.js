@@ -69,7 +69,8 @@ module.exports = () => {
 
     const data = {
       dir,
-      dotDir: dir.replace(/\//g, "."),
+      dotDir: dir.replace(/\//g, '.'),
+      noSrcDir: dir.replace(/^src\//, ''),
       name,
       imports: {
         actions: hasActions ? "import * as actions from './actions';" : "",
@@ -93,11 +94,11 @@ module.exports = () => {
         test: `${name}.spec.${extension === "ts" ? "tsx" : extension}`,
         testTemplate: `Component.spec.${
           extension === "ts" ? "tsx" : extension
-        }`,
+          }`,
         story: `${name}.story.${extension === "ts" ? "tsx" : extension}`,
         storyTemplate: `Component.story.${
           extension === "ts" ? "tsx" : extension
-        }`,
+          }`,
         createIf: true
       },
       { target: `index.${extension}`, createIf: hasIndex },

@@ -9,7 +9,7 @@ const mockProps = {
   
 };
 
-storiesOf('{{dir}}{{name}}', module)
+storiesOf('{{noSrcDir}}{{name}}', module)
   .addDecorator(Provider)
   .addDecorator(DefaultStylesDecorator)
   .add('Render default', () => <{{name}} {...mockProps} />);
