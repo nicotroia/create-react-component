@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { injectIntl } from 'react-intl';
 
 import { RootState } from '@/rootReducer';
@@ -14,9 +15,12 @@ const mapStateToProps = (state: RootState): ConnectedProps => ({
 const mapDispatchToProps: DispatchProps = {
 };
 
-export default connect<ConnectedProps, DispatchProps, OwnProps, RootState>(
-  mapStateToProps,
-  mapDispatchToProps,
-  null,
-  { forwardRef: true }
-)(injectIntl({{name}}));
+export default compose(
+  connect<ConnectedProps, DispatchProps, OwnProps, RootState>(
+    mapStateToProps,
+    mapDispatchToProps,
+    null,
+    { forwardRef: true },
+  ),
+  injectIntl
+)({{name}});
