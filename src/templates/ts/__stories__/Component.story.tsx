@@ -4,9 +4,12 @@ import { IntlProvider } from 'react-intl';
 
 import Provider from '@/components/storybook/Provider';
 import DefaultStylesDecorator from '@/components/storybook/DefaultStylesDecorator';
+import { intl } from '@/misc/tests';
 import {{name}} from '../{{name}}';
 
-const mockProps = {};
+const mockProps = {
+  intl,
+};
 
 storiesOf('{{noSrcDir}}{{name}}', module)
   .addDecorator(Provider)
