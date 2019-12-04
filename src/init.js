@@ -69,7 +69,7 @@ module.exports = () => {
 
     const data = {
       dir,
-      dotDir: dir.replace(/\//g, '.'),
+      dotDir: dir.replace(/^src\//, '').replace(/\//g, '.'),
       noSrcDir: dir.replace(/^src\//, ''),
       name,
       imports: {
