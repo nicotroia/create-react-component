@@ -1,4 +1,5 @@
 import { IntlShape } from 'react-intl';
+import { Action } from 'vidy-redux';
 
 import { RootState } from '@/rootReducer';
 
@@ -10,6 +11,11 @@ export interface {{name}}Selector<
   > {
   (state: RootState): {{name}}[T];
 }
+
+export interface ActionType {};
+
+export type Actions =
+  | Action<'LOG_OUT'>;
 
 export interface State {}
 
