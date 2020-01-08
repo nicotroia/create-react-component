@@ -1,6 +1,6 @@
 import React from 'react';
-import { createWithIntl, intl } from '@/misc/tests';
 
+import { createWithIntl, intl } from '@/misc/tests';
 import {{name}} from '../{{name}}';
 
 const mockProps = {
