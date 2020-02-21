@@ -1,6 +1,6 @@
+import * as appConstants from '@/pages/App/constants';
 import reducer, { initialState } from '../reducer';
 import * as constants from '../constants';
-import * as appConstants from '@/pages/App/constants';
 
 describe('{{name}} Reducer tests', () => {
 
